@@ -32,7 +32,7 @@ const CONFIG = {
       "assets/images/3.jpg"
     ],
     videos: [
-      "assets/videos/happy.mp4",
+      "assets/js/happy.mp4",
     ],
   },
 };
