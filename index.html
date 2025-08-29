@@ -1,456 +1,123 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>祝婷婷七夕快乐</title>
+    <meta name="theme-color" content="#0b0b1a" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Background canvases -->
+      <canvas id="starsCanvas" class="canvas-layer" aria-hidden="true"></canvas>
+      <canvas id="sakuraCanvas" class="canvas-layer" aria-hidden="true"></canvas>
+      <canvas id="snowCanvas" class="canvas-layer" aria-hidden="true"></canvas>
+      <canvas id="fireworksCanvas" class="canvas-layer" aria-hidden="true"></canvas>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="format-detection" content="email=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="renderer" content="webkit">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <title>[简历]李祥-前端开发工程师/南京</title>
-    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/typo.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/index.css">
-    <script>
-        function loading() {
-            document.getElementsByClassName('avatar')[0].style.display = 'block';
-            document.getElementsByClassName('loading')[0].style.display = 'none';
-        }
-    </script>
-</head>
+      <!-- UI overlay -->
+      <div id="uiOverlay" class="overlay">
+        <header class="top-bar">
+          <div class="days">
+            <span>我们已经相伴第</span>
+            <strong id="daysTogether">0</strong>
+            <span>天</span>
+          </div>
+          <div class="controls">
+            <button id="musicToggle" class="btn ghost" aria-label="音乐播放/暂停">♫ 音乐</button>
+          </div>
+        </header>
 
-<body>
-
-    <header class="header"></header>
-
-    <article class="container">
-        <section class="side" id="side">
-
-            <!-- 左栏固定开关，记得及时删除这段代码 Start-->
-            <label class="switch" style="display: none;" onchange="switchFixed()">
-                <script type="text/javaScript">
-                    function switchFixed(){
-                        var value = document.getElementById('side').style.position === 'fixed' ? 'absolute' : 'fixed';
-                        document.getElementById('side').style.position = value;
-                    }
-                </script>
-                <input id="cb" type="checkbox">
-                <span class="slider round"></span>
-            </label>
-            <style>
-                @media (min-width: 414px) {
-                    .switch {
-                        position: relative;
-                        display: inline-block !important;
-                        width: 60px;
-                        height: 34px;
-                    }
-
-                    .switch input {
-                        display: none;
-                    }
-
-                    .slider {
-                        position: absolute;
-                        cursor: pointer;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        background-color: #ccc;
-                        -webkit-transition: .4s;
-                        transition: .4s;
-                    }
-
-                    .slider:before {
-                        position: absolute;
-                        content: "";
-                        height: 26px;
-                        width: 26px;
-                        left: 4px;
-                        bottom: 4px;
-                        background-color: white;
-                        -webkit-transition: .4s;
-                        transition: .4s;
-                    }
-
-                    input:checked+.slider {
-                        background-color: #1abc9c;
-                    }
-
-                    input:focus+.slider {
-                        box-shadow: 0 0 1px #1abc9c;
-                    }
-
-                    input:checked+.slider:before {
-                        -webkit-transform: translateX(26px);
-                        -ms-transform: translateX(26px);
-                        transform: translateX(26px);
-                    }
-
-                    .slider.round {
-                        border-radius: 34px;
-                    }
-
-                    .slider.round:before {
-                        border-radius: 50%;
-                    }
-
-                    .lixiangcu {
-                        font-weight: 500;
-                    }
-                }
-            </style>
-            <!-- 左侧固定开关，记得及时删除这段代码 End-->
-
-            <!-- 个人肖像 -->
-            <section class="me">
-                <section class="portrait">
-                    <div class="loading">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <!-- 头像照片 -->
-                    <img class="avatar" src="assets/images/avatar.png" onload="loading()">
-                </section>
-
-                <h1 class="name">李祥</h1>
-                <h4 class="info-job">前端开发工程师 / 南京</h4>
-
-            </section>
-
-            <!-- 基本信息 -->
-            <section class="profile info-unit">
-                <h2>
-                    <i class="fa fa-user" aria-hidden="true"></i>基本信息</h2>
-                <hr />
-                <ul>
-                    <li>
-                        <label>个人信息</label>
-                        <span>李祥 / 男 / 24岁</span>
-                    </li>
-                    <li>
-                        <label>大学生英语</label>
-                        <span>CET-4</span>
-                    </li>
-                    <li>
-                        <label>普通话考试</label>
-                        <span>二级甲等</span>
-                    </li>
-                    <!-- <li>
-                        <label>计算机水平</label>
-                        <span></span>
-                    </li> -->
-                </ul>
-            </section>
-
-            <!-- 联系方式 -->
-            <section class="contact info-unit">
-                <h2>
-                    <i class="fa fa-phone" aria-hidden="true"></i>联系方式</h2>
-                <hr />
-                <ul>
-                    <li>
-                        <label>手机</label>
-                        <a href="tel:15168285219" target="_blank">175-5112-3716</a>
-                    </li>
-                    <li>
-                        <label>邮箱</label>
-                        <a href="mailto:ze.zh@hotmail.com" target="_blank">1336368016@qq.com</a>
-                    </li>
-                    <li>
-                        <label>个人主页</label>
-                        <a href="https://blog.csdn.net/clearlove_xiang" target="_blank">0b11111110.com/</a>
-                    </li>
-                    <li>
-                        <label>Github</label>
-                        <a href="https://github.com/fakerdog" target="_blank">github.com/0b11111110</a>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- 技能点 -->
-            <section class="skill info-unit">
-                <h2>
-                    <i class="fa fa-code" aria-hidden="true"></i>技能点</h2>
-                <hr />
-                <ul>
-                    <li>
-                        <label>HTML</label>
-                        <progress value="90" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>CSS</label>
-                        <progress value="90" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>JavaScript</label>
-                        <progress value="85" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>小程序</label>
-                        <progress value="90" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>Vue.js</label>
-                        <progress value="85" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>h5</label>
-                        <progress value="85" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>Bootstrap</label>
-                        <progress value="80" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>Node.js</label>
-                        <progress value="70" max="100"></progress>
-                    </li>
-
-                </ul>
-            </section>
-
-            <section class="qrcode info-unit">
-                <h2><i class="fa fa-qrcode" aria-hidden="true"></i>个人微信</h2>
-                <hr />
-                <img src="./assets/images/qrcode.jpg?raw=true" style="width: 50%;margin:20px 0px 0px 60px" alt="">
-            </section>
-
+        <!-- Page 1: Intro fixed content -->
+        <section class="section intro" id="introSection">
+          <h1 class="script">给婷婷的一封情书</h1>
+          <p id="typewriterText">从 2023-08-26 到今天，我把所有的喜欢都攒成一片星海，想在今晚悄悄告诉你：无论风雪还是樱花雨，每个季节都想与你一起经历。我觉得天上的星河很美，直到看见了你的眼睛。七夕快乐，祝我们永远幸福，互相支撑着走下去！</p>
+          <button id="startJourney" class="btn primary">开始我们的浪漫旅程</button>
         </section>
 
-        <section class="main">
+        
 
-            <!-- 教育经历 -->
-            <section class="edu info-unit">
-                <h2>
-                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>教育经历</h2>
-                <hr />
-                <ul>
-                    <li>
-                        <h3>
-                            <span class="lixiangcu">淮北师范大学信息学院 - 电子商务专业（本科）</span>
-                            <time>2014.9-2018.6</time>
-                        </h3>
-                        <ul class="info-content">
-                            <li>通过了大学生英语四级考试（CET4）。</li>
-                            <li>国家普通话2级甲等资格证书。</li>
-                            <li>买了javascript相关书籍（JavaScript高级程序设计），在老师的帮助下做了自己的第一个网页。</li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </section>
-
-            <!-- 工作经历 -->
-            <section class="work info-unit">
-                <h2>
-                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>工作经历</h2>
-                <hr />
-                <ul>
-                    <li>
-                        <h3>
-                            <span class="lixiangcu">南京回路教育科技有限公司－前端开发工程师（实习）</span>
-                            <time>2017.10-2018.6</time>
-                        </h3>
-                        <ul class="info-content">
-                            <li>负责小程序业务前端开发，测试</li>
-                            <li>独立开发流量型小程序，测试，上线</li>
-                            <li>独立开发流量型h5项目，参与小游戏开发。</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h3>
-                            <span class="lixiangcu">南京笛声网络科技有限公司－前端开发工程师</span>
-                            <time>2018.06-2019.3</time>
-                        </h3>
-                        <ul class="info-content">
-                            <li>负责小程序业务前端开发，测试</li>
-                            <li>独立开发流量型小程序，测试，上线</li>
-                            <li>独立开发流量型h5项目，参与小游戏开发。</li>
-                        </ul>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- 项目经验 -->
-            <section class="project info-unit">
-                <h2>
-                    <i class="fa fa-terminal" aria-hidden="true"></i>项目经验</h2>
-                <hr />
-                <ul>
-                    <li>
-                        <h3>
-                            <span class="lixiangcu">[项目1]西瓜足迹</span>
-                            <span class="link">
-                                <a href="https://github.com/fakerdog/xiguaZJ" target="_blank">Demo</a>
-                            </span>
-                            <time>2018.05-2018.06</time>
-                        </h3>
-                        <ul class="info-content">
-                            <li>技术栈：小程序框架+canvas+swiper组件</li>
-                            <li>
-                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                                [描述]项目主要是由用户选择去过中国哪些城市，并生成中国地图的足迹图，可以分享朋友圈，算法随机产生超过全国百分之多少的人。
-                                <br />
-                                <i class="fa fa-users" aria-hidden="true"></i>
-                                [团队]UI设计师+产品+前后端+测试
-                                <br />
-                                <i class="fa fa-bars" aria-hidden="true"></i>
-                                [贡献]我在项目中主要担任前端开发的角色，侧边栏的切换，足迹图的生成，随机产生的百分比算法，后续的更新迭代。
-                                <br />
-                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                [业绩]项目累计有5000多万用户（PV），和2000多万的独立访问UV。巨大的广告收益。</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h3>
-                            <span class="lixiangcu">[项目2]芒果课程表</span>
-                            <span class="link">
-                                <a href="#" target="_blank">Demo</a>
-                            </span>
-                            <time>2018.07-2018.9</time>
-                        </h3>
-                        <ul class="info-content">
-                            <li>技术栈：HTML5+Css3+小程序框架+canvas</li>
-                            <li>
-                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                                [描述]主要是针对高中生和大学生推出的一款课程表小程序，用户可以选择上课时间，地点，主题等。还可以通过学校教务系统自动导入班级课程表，也可以通过同学已制作的课程表copy。并且添加了签到和其他的娱乐功能，增加小程序的粘性。
-                                <br />
-                                <i class="fa fa-users" aria-hidden="true"></i>
-                                [团队]UI设计师+产品+前后端开发+运营+推广+测试
-                                <br />
-                                <i class="fa fa-bars" aria-hidden="true"></i>
-                                [贡献]我负责页面搭建，前后台交互，数据处理，优化用户体验和优化应用速度，后续的更新迭代。
-                                <br />
-                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                [业绩]芒果课程表项目累计2万的高校用户，用户粘性较高，垂直度高，用户留存转化比例很高。
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h3>
-                            <span class="lixiangcu">[项目3]熊猫游戏盒子</span>
-                            <span class="link">
-                                <a href="https://github.com/fakerdog/pantaBox" target="_blank">Demo</a>
-                            </span>
-                            <time>2018.9-2018.10</time>
-                        </h3>
-                        <ul class="info-content">
-                            <li>技术栈：HTML5+Css3+小程序框架</li>
-                            <li>
-                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                                [描述]熊猫游戏盒子是一个小游戏聚合平台，目的是为了小游戏之间的互相导流，我们提供一个这样的平台，并通过其他的一些方式提高用户留存。
-                                <br />
-                                <i class="fa fa-users" aria-hidden="true"></i>
-                                [团队]UI设计师+产品+前后端开发+运营+测试
-                                <br />
-                                <i class="fa fa-bars" aria-hidden="true"></i>
-                                [贡献]我主要负责页面开发，功能实现，更新迭代等。
-                                <br />
-                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                [业绩]熊猫游戏盒子共对接了50多款小游戏，用户总数累计5万+
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h3>
-                            <span class="lixiangcu">[项目4]天天步数有赏</span>
-                            <span class="link">
-                                <a href="https://github.com/fakerdog/dayStepMoney" target="_blank">Demo</a>
-                            </span>
-                            <time>2018.12-2019.01</time>
-                        </h3>
-                        <ul class="info-content">
-                            <li>技术栈：HTML5+Css3+小程序框架+canvas</li>
-                            <li>
-                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                                [描述]通过微信提供的接口获取用户的运动步数，步数可以兑换成卡币（卡路里币），卡币可以兑换成现金或参与其他活动，是一款运动换钱的功能小程序。
-                                <br />
-                                <i class="fa fa-users" aria-hidden="true"></i>
-                                [团队]UI设计师+产品+前后端开发+运营+测试+推广
-                                <br />
-                                <i class="fa fa-bars" aria-hidden="true"></i>
-                                [贡献]我负责前端页面开发，获取用户一段时间的步数，进行数据处理，兑换卡币，用户助力，兑换人列表展示，提现等。
-                                <br />
-                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                [业绩]积累了留可观的留存率高的用户，用户群体针对性强，利于变现。
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <h3>
-                            <span class="lixiangcu">[项目5]招商加盟助手</span>
-                            <span class="link">
-                                <a href="https://github.com/fakerdog/zhaoShangJiaMeng" target="_blank">Demo</a>
-                            </span>
-                            <time>2019.02-至今</time>
-                        </h3>
-                        <ul class="info-content">
-                            <li>技术栈：HTML5+Css3+小程序框架+canvas</li>
-                            <li>
-                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                                [描述]公司在招商加盟助手上联系客服与我们合作，可以发起红包活动。用户可以通过邀请好友，或者其他方式集齐带有赞助商名字的卡片，以此增加活动公司的知名度和曝光率
-                                <br />
-                                <i class="fa fa-users" aria-hidden="true"></i>
-                                [团队]UI设计师+产品+前后端开发+运营+测试+推广
-                                <br />
-                                <i class="fa fa-bars" aria-hidden="true"></i>
-                                [贡献]我负责前端页面开发，前后端交互，数据处理展示
-                                <br />
-                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                [业绩]刚刚上线
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- 自我评价 -->
-            <section class="work info-unit">
-                <h2>
-                    <i class="fa fa-pencil" aria-hidden="true"></i>我的优势/自我评价</h2>
-                <hr />
-                <p>工作中认真负责，团队意识强，能解决前端工作中绝大部分问题。对常用框架和后端技术有一定了解。
-                </p>
-            </section>
+        <!-- Page 3: Envelope + Signature -->
+        <section class="section" id="envelopeSection" style="display:none;">
+          <div class="envelope">
+            <div class="envelope-header">
+              <div class="script">致 婷婷</div>
+            </div>
+            <div class="envelope-body">
+              <div class="letter-paper" id="envelopeLetter">
+                <img src="assets/images/xinfeng.png" alt="给婷婷的信" style="width: 100%; height: auto; max-width: 500px; border-radius: 8px;" />
+              </div>
+              <div class="signature-wrap">
+                <div class="label">请在此签名确认收下我的心</div>
+                <canvas id="signatureCanvas" width="240" height="110"></canvas>
+              </div>
+            </div>
+            <div class="envelope-actions">
+              <button id="clearSignature" class="btn ghost">清除</button>
+              <button id="acceptLetter" class="btn primary">确定</button>
+            </div>
+          </div>
         </section>
-    </article>
+
+        <!-- Page 4: Proposal + Video -->
+        <section class="section proposal hidden" id="proposalSection">
+          <h2 class="script">愿意和我一直一直走下去吗？</h2>
+          <div class="choices">
+            <button id="yesBtn" class="btn yes">愿意</button>
+            <button id="noBtn" class="btn no">不愿意</button>
+          </div>
+          <p id="proposalHint" class="hint">提示：不愿意可能会逃跑哦</p>
+          <div style="margin-top:16px; display:none;" id="videoWrap">
+            <video id="resultVideo" src="assets/videos/happy.mp4" controls style="max-width:100%;border-radius:12px;"></video>
+          </div>
+        </section>
+
+        <!-- Celebration message -->
+        <section class="section celebration hidden" id="celebrationSection">
+          <h2 class="script">我会把所有的浪漫都给你</h2>
+          <p>一起看流星、放烟花、吹樱花雨，收藏每一个与你有关的片刻。</p>
+        </section>
+
+        <!-- Page 2: Timeline / Gallery (Masonry) -->
+        <section class="section gallery" id="gallerySection" style="display:none;">
+          <h2 class="script">我们的来时路</h2>
+          <div id="masonry" class="masonry"></div>
+          <div style="text-align:center;margin-top:16px;">
+            <button id="goToEnvelope" class="btn glow">继续</button>
+          </div>
+        </section>
+
+        <!-- Wish section (extra) -->
+        <section class="section wish hidden" id="wishSection">
+          <h2 class="script">许个愿吧</h2>
+          <input id="wishInput" placeholder="在此输入愿望，回车放天灯" maxlength="60" />
+          <div id="lanternLayer"></div>
+        </section>
+      </div>
+
+      <!-- Lightbox viewer -->
+      <div id="lightbox" class="lightbox hidden" aria-hidden="true">
+        <div class="lightbox-backdrop"></div>
+        <div class="lightbox-content">
+          <button id="lightboxClose" class="btn ghost close" aria-label="关闭">×</button>
+          <img id="lightboxImage" alt="" />
+          <video id="lightboxVideo" controls></video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Background audio (replace src later) -->
+    <audio id="bgm" autoplay loop preload="none">
+      <source src="assets/audio/loveu.mp3" type="audio/mpeg" />
+      <source src="assets/audio/loveu.flac" type="audio/flac" />
+      <source src="assets/audio/loveu.ogg" type="audio/ogg" />
+    </audio>
+
+    <script src="app.js"></script>
+  </body>
+  </html>
 
 
-
-    <footer class="footer">
-        <p>© 2019 李祥.文档最后更新时间为
-            <time>2019年2月8日</time>.</p>
-    </footer>
-
-    <!-- 侧栏 -->
-    <!-- <aside>
-        <ul>
-            <li>
-                <a href="https://gitee.com/itsay/resume" target="_blank">源代码</a>
-            </li>
-            <li>
-                <a href="http://if2er.com/" target="_blank">Blog</a>
-            </li>
-        </ul>
-    </aside> -->
-
-    <script src="./assets/js/index.js"></script>
-</body>
-
-</html>
